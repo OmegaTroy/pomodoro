@@ -1,0 +1,153 @@
+:root {   
+    --violeta: #722fac;
+    --rojofurte: #fe001b;   
+    --Negro: #000;
+    --FO: #2a2b2f;
+    --FA: #0e1538;
+    --FV:  #48426D;
+    --Blanco: #fff;
+    --Primario: #2bd2ff;
+    --Secundario: #ff0461;
+    --Tercero: #18d539;
+    --Cuarto: #101010;
+    --gray-drak: #1f212b;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --gray: #6c757d;
+    --primary: #007bff;
+    --secondary: #232c33;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #2b343b;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --boton: #363636;
+    --seleste: #2196f3;
+}
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    background: var(--gray-drak);
+    display: flex;
+    justify-content: center;
+}
+.app{
+    width: 50%;
+    height: 91vh;
+    margin: 2%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: var(--FV);
+    border-radius: 1rem;
+    box-shadow: 0px 7px 15px 5px rgba(0, 0, 0, .30);
+}
+
+.time{
+    width: 100%;
+    height: 34vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.counter{
+    font-size: 5rem;
+}
+
+.title{
+    font-size: 1.5rem;
+}
+.contenedor{
+    width: 100%;
+    height: 56vh;
+}
+
+.form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+}
+.input{
+    background: var(--gray-drak);
+    color: var(--light);
+    letter-spacing: 1px;
+    width: 50%;
+    height: 6vh;
+    font-size: 1em;
+    margin: 0 1em 0 0;
+    border-radius: 1em;
+    padding:10px;
+    outline: none;
+    border: 2px solid var(--gray-drak);
+    box-shadow: 0px 4px 15px 5px rgba(0, 0, 0, .30);
+}
+
+.input:focus{
+    border: 2px solid var(--seleste);
+}
+
+.input__btn{
+    font-size: 1.2em;
+    padding:0 0.6em;
+    background: var(--primary) ;
+    border: none;
+    border-radius: 1rem;
+    cursor:pointer;
+}
+
+.tareas{
+    height: 45vh;
+    display: grid;
+    grid-template-rows: repeat(6,1fr);
+    gap: 7px;
+}
+
+.btn{
+    width: 75%;
+    height: 6vh;
+    background: var(--primary);
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+}
+
+.tarea{
+    font-size: 1.5em;
+}
+
+.completed{
+    width: 25%;
+}
+
+@media screen and (max-width: 800px){
+    .app{
+        width: 80%;
+    }
+}
