@@ -5,6 +5,7 @@ let $contenedor = $('.tareas');
 let $item = $('.item');
 const $counter = $('.counter');
 const $titulo = $('#titulo');
+let $btn = document.querySelectorAll('.btn');
 
 //variables
 
@@ -12,7 +13,7 @@ const tareas = [];
 let time = 0;
 let id = 0;
 let timer = null;
-let reset = null;
+let res = null;
 
 $form.addEventListener('submit',(e)=>{
     e.preventDefault();
@@ -26,7 +27,7 @@ $form.addEventListener('submit',(e)=>{
             completed: false
         };
         tareas.push(tarea);
-        return {...tarea}
+        return {...tarea};
     }
 
     const renderTarea=() => {
@@ -48,15 +49,16 @@ $form.addEventListener('submit',(e)=>{
                 if(!time){
                     let current = btn.getAttribute('id');
                     startBtn(current);
-                    btn.textContent = 'En proceso...'
+                    btn.textContent = 'En proceso...';
+                    btn.classList.add('proceso');
                 }
         })
     })
 }
 
 const startBtn = (id) => {
-    time = 1 * 5;
-    let currentId = document.getElementById(id)
+    time = 25 * 60;
+    let currentId = document.getElementById(id);
     let next = currentId.nextElementSibling; 
     let titulo = next.textContent;
 
@@ -73,6 +75,7 @@ const timeInterval = (id)=>{
         clearInterval(timer);
         $titulo.textContent = '';
         tareaCompleted(id);
+        receso(id);
         renderTarea();
     }
 }
@@ -80,22 +83,40 @@ const timeInterval = (id)=>{
 const renderTime= () =>{
     let minute = parseInt(time / 60);
     let segun = parseInt(time % 60);
-    $counter.textContent = `${minute < 10 ? '0' : '' }${minute}: ${segun < 10 ? '0' : ''}${segun}`
+    $counter.textContent = `${minute < 10 ? '0' : '' }${minute} : ${segun < 10 ? '0' : ''}${segun}`;
 }
 
+const receso = (id) => {
+    time = 5 * 60;
+    $titulo.textContent = 'Receso';
+    res = setInterval(()=>{
+        recesoInterval();
+    }, 1000)
+}
+
+const recesoInterval=() => {
+    time--;
+    renderTime();
+    if(time === 0){
+        clearInterval(res);
+        $titulo.textContent = '';
+        renderTarea();
+    }
+}
+
+
+
 const tareaCompleted= (id) => {
-    let cuId = document.getElementById(id)
     tareas.forEach((tarea)=>{
         if(tarea.id == id){
             tarea.completed = true;
-            console.log(tarea.completed)
+            console.log(tarea.completed);
         }
     });
     
 }
     if(value){
         createTarea(value);
-        console.log(tareas)
         renderTarea();
         $input.value = '';
     }
