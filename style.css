@@ -133,17 +133,14 @@ body{
     margin: 0 10px;
 }
 
-.item{
+.completed{
     display: flex;
     align-items: center;
+    width: 31%;
 }
 
 .tarea{
     font-size: 1.5em;
-}
-
-.completed{
-    width: 25%;
 }
 
 @media screen and (max-width: 800px){
